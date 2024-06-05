@@ -6,12 +6,12 @@ import os
 pygame.init()
 
 image_chemin = "assets/dos-noir1.bmp"
-
+decale_x = 0
 screen = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("magic")
 clock = pygame.time.Clock()
 running = True
-ziva = classdescartes.Cartes(screen, image_chemin)
+ziva = classdescartes.Cartes(screen, image_chemin, decale_x)
 
 while running:
     # poll for events
@@ -22,7 +22,7 @@ while running:
 
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("purple")
-    ziva.rejouer(screen, image_chemin)
+    ziva.rejouer(screen, image_chemin, decale_x)
     # RENDER YOUR GAME HERE
 
     # flip() the display to put your work on screen
