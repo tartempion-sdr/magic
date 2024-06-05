@@ -5,7 +5,7 @@ import os
 # pygame setup
 pygame.init()
 
-image_chemin = ["assets/dos-noir1.bmp"]
+image_chemin = "assets/dos-noir1.bmp"
 
 screen = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("magic")
@@ -22,7 +22,7 @@ while running:
 
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("purple")
-    ziva.rejouer(screen, image_chemin[0])
+    ziva.rejouer(screen, image_chemin)
     # RENDER YOUR GAME HERE
 
     # flip() the display to put your work on screen
