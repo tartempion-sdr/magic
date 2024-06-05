@@ -22,11 +22,10 @@ class Cartes:
    
     def rejouer(self, p_screen, p_image):
         
-        image8 = os.path.join(image_chemin)
-        image = pygame.image.load(image8)
+        image = pygame.image.load(os.path.join(image_chemin)).convert(p_screen)   
         
-        image1 = image.convert(p_screen)   
-        p_screen.blit(image1, (0, 50))
+        
+        p_screen.blit(image, (0, 0))
             
         #for i in range(10):
             
