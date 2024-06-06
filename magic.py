@@ -12,7 +12,13 @@ screen = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("magic")
 clock = pygame.time.Clock()
 running = True
+
+screen.fill("purple")
+
 ziva = classdescartes.Cartes(screen, image_chemin, decale_x, decale_y)
+ziva.rejouer(screen, image_chemin, decale_x, decale_y)
+print(classdescartes.image_liste)
+
 
 while running:
     # poll for events
@@ -21,9 +27,17 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            for i in range(60):
+                image_rect = classdescartes.image.get_rect(topleft=classdescartes.image_liste[i])
+                if image_rect.collidepoint(event.pos):
+                    print("clic", classdescartes.image_liste[i])
+
     # fill the screen with a color to wipe away anything from last frame
-    screen.fill("purple")
-    ziva.rejouer(screen, image_chemin, decale_x, decale_x)
+    #screen.fill("purple")
+    
+    
     # RENDER YOUR GAME HERE
 
     # flip() the display to put your work on screen
