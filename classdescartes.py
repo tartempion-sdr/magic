@@ -38,9 +38,10 @@ class Cartes:
             for e in range(10):
                 
               
-                carte_instance = p_screen.blit(image, (p_decale_x, p_decale_y))
+                carte_instance = p_screen.blit(image1, (p_decale_x, p_decale_y))
                 carte_n0_xy = (p_decale_x, p_decale_y)
                 image_liste.append(carte_n0_xy)
+                
                 p_decale_x += 50
             p_decale_y += 73
             p_decale_x = 0
