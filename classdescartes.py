@@ -1,8 +1,9 @@
 import pygame
+import random
 import os
 
 
-image_liste = []
+image_liste = {}
 screen = pygame.Surface
 image_chemin = "assets/dos-noir1.bmp"
         
@@ -33,19 +34,20 @@ class Cartes:
           
         image1 = image.convert(p_screen) 
             
-        for i in range(6):
+        for i in range(2):
            
             for e in range(10):
                 
               
                 carte_instance = p_screen.blit(image1, (p_decale_x, p_decale_y))
                 carte_n0_xy = (p_decale_x, p_decale_y)
-                image_liste.append(carte_n0_xy)
+                #creeune liste de tuple coordonee xy
+                image_liste[carte_n0_xy] = [carte_n0_xy, False]
                 
                 p_decale_x += 50
             p_decale_y += 73
             p_decale_x = 0
-        
+        print(image_liste)
     
     
     def gagner(self):

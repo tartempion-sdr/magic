@@ -27,7 +27,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    
+        #action sur une carte
         if event.type == pygame.MOUSEBUTTONDOWN:
             for i in range(60):
                 image_rect = classdescartes.image.get_rect(topleft=classdescartes.image_liste[i])
