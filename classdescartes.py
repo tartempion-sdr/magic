@@ -2,11 +2,21 @@ import pygame
 import random
 import os
 
-
+carte_retournee = []
 image_liste = {}
 screen = pygame.Surface
 image_dos_chemin = "assets/dos-noir1.bmp"
 image_chemin = ["assets/rat.bmp", 
+                "assets/poisson.bmp", 
+                "assets/pieuvre.bmp", 
+                "assets/pie.bmp",
+                "assets/lion.bmp", 
+                "assets/fourmis.bmp", 
+                "assets/chien.bmp", 
+                "assets/chat.bmp",
+                "assets/canard.bmp", 
+                "assets/aigle.bmp",
+                "assets/rat.bmp", 
                 "assets/poisson.bmp", 
                 "assets/pieuvre.bmp", 
                 "assets/pie.bmp",
@@ -42,7 +52,7 @@ class Cartes:
 
           
         
-   
+   #cree l etat initial
     def rejouer(self, p_screen, p_image, p_decale_x, p_decale_y):
           
         image1 = image.convert(p_screen) 
@@ -59,8 +69,8 @@ class Cartes:
                 #print(random_image)
                 #
                 #
-                #
-                #image_chemin.remove(random_image)
+                print(random_image)
+                image_chemin.remove(random_image[0])
                 p_decale_x += 50
             p_decale_y += 73
             p_decale_x = 0

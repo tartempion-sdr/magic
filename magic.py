@@ -27,19 +27,33 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-        #action sur une carte
+        #clic action sur une carte
+        # si le clic souris est detecter
         if event.type == pygame.MOUSEBUTTONDOWN:
+             #iter les keys du dico image_liste qui sont des tuple surface (250, 0) soite les coordonee x, y top left des images
             for i in classdescartes.image_liste:
+               
                 image_rect = classdescartes.image.get_rect(topleft=i)
+                #detecte la colision entre le clic souris et la surface de l image
                 if image_rect.collidepoint(event.pos):
-                    print("clic", classdescartes.image_liste[i][3])
+                    #print("clic", classdescartes.image_liste[i][3])
+                    
+                    ###affiche l image random du dictionnaire image liste
                     string =  classdescartes.image_liste[i][3]
-                    print(string[0])
                     image = pygame.image.load(os.path.join(string[0]))
                     image1 = image.convert(screen) 
                     carte_instance = screen.blit(image1, (image_rect))
-                    print("clic", classdescartes.image_liste[i])
-
+                   # print("clic", classdescartes.image_liste[i])
+                    #si moin de deux cartes retourner alors ajouté a la liste
+                    if len(classdescartes.carte_retournee)<= 2 :
+                        classdescartes.carte_retournee.append(classdescartes.image_liste[i])
+                        print(classdescartes.carte_retournee)
+                    
+                    
+                        
+                    if len(classdescartes.carte_retournee)> 2 :
+                        classdescartes.carte_retournee.clear()
+                        print("liste d elements carte_retournee videe",classdescartes.carte_retournee )
     # fill the screen with a color to wipe away anything from last frame
     #screen.fill("purple")
     
