@@ -65,7 +65,7 @@ class Cartes:
                 carte_instance = p_screen.blit(image, (p_decale_x, p_decale_y))
                 carte_n0_xy = (p_decale_x, p_decale_y)
                 #creeune liste de tuple coordonee xy
-                image_liste[carte_n0_xy] = [carte_n0_xy, False, image_dos_chemin, random_image]
+                image_liste[carte_n0_xy] = [carte_n0_xy, False, image_dos_chemin, random_image[0]]
                 #print(random_image)
                 #
                 #
