@@ -2,6 +2,10 @@ import pygame
 import random
 import os
 
+NOIR = (0, 0, 0)
+BLANC = (255, 255, 255)
+
+score = int(0)
 carte_retournee = []
 image_liste = {}
 screen = pygame.Surface
@@ -44,12 +48,13 @@ class Cartes:
         self.a_decale_x = p_decale_x
         self.a_decale_y = p_decale_y
         
+        
         #p_screen = pygame.display.set_mode((1280, 720))
         p_screen = screen
         p_image = image_dos_chemin
         p_decale_x = decale_x
         p_decale_y = decale_y       
-
+        
           
         
    #cree l etat initial
@@ -70,16 +75,22 @@ class Cartes:
                 #
                 #
                 print(random_image)
-                image_chemin.remove(random_image[0])
-                p_decale_x += 50
-            p_decale_y += 73
+                
+                p_decale_x += 100
+            p_decale_y += 150
             p_decale_x = 0
         print(len(image_liste))
-    
-    
-    def gagner(self):
-        pass    
-    
-    
-    def perdu(self):
-        pass
+ 
+    def dessiner_bouton(ecran, message, couleur, x, y, largeur, hauteur):
+  
+        test = pygame.draw.rect(ecran, couleur, [x, y, largeur, hauteur])
+        font = pygame.font.SysFont('Calibri', 25)
+        texte = font.render(message, True, BLANC)
+        ecran.blit(texte,  (0, 0) )
+        
+    def afficher_score(ecran, message, couleur, x, y, largeur, hauteur):
+        
+        pygame.draw.rect(ecran, couleur, [x, y, largeur, hauteur])
+        font = pygame.font.SysFont('Calibri', 25)
+        textsurface = font.render(message, False, (0, 0, 0))
+        ecran.blit(textsurface,(0,0)) 

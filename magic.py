@@ -4,23 +4,36 @@ import os
  
 # pygame setup
 pygame.init()
+ # you have to call this at the start, 
+#pygame.font.init()
+# if you want to use this module.
+myfont = pygame.font.SysFont('Comic Sans MS', 30)
+
+score = 0
+NOIR = (0, 0, 0)
 
 image_dos_chemin = "assets/dos-noir1.bmp"
 decale_x = 0
-decale_y = 0
+decale_y = 73
 screen = pygame.display.set_mode((1280, 720))
+screen1 = pygame.Surface
 pygame.display.set_caption("magic")
 clock = pygame.time.Clock()
-running = True
-
 screen.fill("purple")
+
 
 ziva = classdescartes.Cartes(screen, image_dos_chemin, decale_x, decale_y)
 ziva.rejouer(screen, image_dos_chemin, decale_x, decale_y)
 
-
+running = True
 
 while running:
+          
+    classdescartes.Cartes.dessiner_bouton(screen, 'Rejouez', NOIR, 0, 0, 100, 50)
+
+    #classdescartes.Cartes.afficher_score(screen,  'Score = '+ str(score), NOIR, 200, 0, 200, 50)
+    
+    
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
     for event in pygame.event.get():
@@ -31,8 +44,17 @@ while running:
         # si le clic souris est detecter
         if event.type == pygame.MOUSEBUTTONDOWN:
              #iter les keys du dico image_liste qui sont des tuple surface (250, 0) soite les coordonee x, y top left des images
+            bouton_rect = pygame.Rect(0, 0, 200, 50)
+            mouse_pos = event.pos
+            mouse_rect = pygame.Rect(mouse_pos[0], mouse_pos[1], 1, 1)
+                         
+            print(bouton_rect) 
+            if bouton_rect.colliderect(mouse_rect):
+                
+                ziva2 = classdescartes.Cartes(screen, image_dos_chemin, decale_x, decale_y)
+                ziva2.rejouer(screen, image_dos_chemin, decale_x, decale_y) 
             for i in classdescartes.image_liste:
-               
+                
                 image_rect = classdescartes.image.get_rect(topleft=i)
                 #detecte la colision entre le clic souris et la surface de l image
                 if image_rect.collidepoint(event.pos):
@@ -53,11 +75,7 @@ while running:
                             classdescartes.carte_retournee.append(classdescartes.image_liste[i])
                             print(classdescartes.carte_retournee)
                             
-                        """     if len(classdescartes.carte_retournee) > 0 :
-                                if classdescartes.image_liste[i][0] != classdescartes.carte_retournee[0][0]:
-                                    classdescartes.carte_retournee.append(classdescartes.image_liste[i])
-                                    print(classdescartes.carte_retournee)
-                           """ 
+                        
                     #si il y a deux carte dans la liste carte retourner
                     if len(classdescartes.carte_retournee)== 2 :
                         #si la string du non de fichier est la meme 
@@ -74,7 +92,14 @@ while running:
                                 
                                 classdescartes.carte_retournee.clear()
                                 print("liste d elements carte_retournee videe",classdescartes.carte_retournee )
-                           
+                                
+                                toutes_valeurs_vraies = all(valeur[1] for valeur in classdescartes.image_liste.values())
+                                if toutes_valeurs_vraies:    
+                                    score += 1
+                                    textsurface = myfont.render('Score = '+ str(classdescartes.score), False, (0, 0, 0))
+                                    screen.blit(textsurface,(0,0))
+                                    print("score class = ",score)
+                                    
                             else:
                                 for i in range(2):
                                     print("double clic", classdescartes.carte_retournee[0][2])
@@ -104,8 +129,8 @@ while running:
                     
                             classdescartes.carte_retournee.clear()
                             print("liste d elements carte_retournee videe",classdescartes.carte_retournee )
-                           
-   
+                
+    
     # fill the screen with a color to wipe away anything from last frame
     #screen.fill("purple")
     
