@@ -53,6 +53,9 @@ while running:
                 
                 ziva2 = classdescartes.Cartes(screen, image_dos_chemin, decale_x, decale_y)
                 ziva2.rejouer(screen, image_dos_chemin, decale_x, decale_y) 
+           
+                
+                
             for i in classdescartes.image_liste:
                 
                 image_rect = classdescartes.image.get_rect(topleft=i)
